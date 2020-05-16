@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset = "utf-8">
+	<script src = "calculator.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		function createSession()
+		{
+			if(saveDetails.checked == 1)
+			{
+				localStorage.setItem("userName", $("#userName").val());
+				localStorage.setItem("password", $("#password").val());	
+			}
+		}
+		function initialize()
+		{
+			userName.value = localStorage.getItem("userName");
+			password.value = localStorage.getItem("password");
+
+		}
+	</script>
+</head>
+<body onload="initialize()">
+	Enter user name:
+	<input type = "text" name = "username" id ="userName"><br>
+	Enter password:
+	<input type = "text" name = "password" id ="password"><br>
+	<input type="checkbox" id="saveDetails">Save login credentials<br>
+	<input type = "button" name = "login" value = "Login" onclick = "createSession()">
+
+</body>

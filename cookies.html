@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset = "utf-8">
+	<script src = "calculator.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		function createCookies()
+		{
+			if(checkbox.checked == 1)
+			{
+				var date = new Date();
+				date.setTime(date.getTime() + (60*60*1000));
+				var expires = "expires="+ date.toUTCString();
+				document.cookie =  "userName =" + $("#userName").val() + ";" + expires + ";";
+				document.cookie =  "password =" + $("#password").val() + ";" + expires + ";";
+			}
+		}
+		function initialize()
+		{
+			var cookies = document.cookie;
+			var cooki = cookies.split(";");
+			var us = cooki[0].split("=");
+			var pa = cooki[1].split("=");
+			$("#userName").val(us[1]);
+			$("#password").val(pa[1]);
+		}
+	</script>
+</head>
+<body onload="initialize()">
+	Enter user name:
+	<input type = "text" name = "username" id ="userName"><br>
+	Enter password:
+	<input type = "text" name = "password" id ="password"><br>
+	<input type="checkbox" id="checkbox">Save login credentials<br>
+	<input type = "button" name = "login" value = "Login" onclick = "createCookies()">
+
+</body>
